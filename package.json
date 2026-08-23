@@ -1,0 +1,26 @@
+{
+  "name": "cursor-and-covers",
+  "private": false,
+  "version": "1.0.0",
+  "description": "An open-source editorial portfolio with a cursor-following portrait and interactive Three.js bookshelf.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "start": "vite --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@types/three": "^0.185.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^6.0.5",
+    "typescript": "^5.9.2",
+    "vite": "^8.2.1"
+  }
+}
