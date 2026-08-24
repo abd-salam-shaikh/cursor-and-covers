@@ -20,6 +20,7 @@ type Book = {
 };
 
 const faceFrames: Direction[] = ["center", "left", "right", "up", "down", "up-left", "up-right", "down-left", "down-right"];
+const portraitFrame = (direction: Direction) => `${import.meta.env.BASE_URL}assets/portrait/frames/${direction}.jpg`;
 
 const career = [
   {
@@ -149,7 +150,7 @@ function CursorPortrait() {
     const image = frame.current;
     if (!image) return;
     const ring: Exclude<Direction, "center">[] = ["right", "down-right", "down", "down-left", "left", "up-left", "up", "up-right"];
-    const endpoint = (direction: Direction) => `/assets/portrait/frames/${direction}.jpg`;
+    const endpoint = portraitFrame;
     const between = (direction: Exclude<Direction, "center">, _step: number) => endpoint(direction);
     const orbitFrame = (_from: Exclude<Direction, "center">, to: Exclude<Direction, "center">, _step: number) => endpoint(to);
     const motionSteps = [1];
@@ -261,7 +262,7 @@ function CursorPortrait() {
   }, []);
 
   return <div className="portrait" ref={portrait} data-direction="center">
-    <img ref={frame} src="/assets/portrait/frames/center.jpg" alt="Fictional portrait of Maya Chen following the cursor" width="320" height="320" fetchPriority="high" />
+    <img ref={frame} src={portraitFrame("center")} alt="Fictional portrait of Maya Chen following the cursor" width="320" height="320" fetchPriority="high" />
   </div>;
 }
 
@@ -355,7 +356,7 @@ export default function App() {
   useEffect(() => { document.documentElement.dataset.palette = palette; }, [palette]);
 
   const sections: Section[] = [
-    { id: "about", title: "About", body: <div className="about-grid"><p className="about-lead">I’m Maya Chen, a fictional product architect used to demonstrate this open-source portfolio starter.</p><div><p>I help teams turn complex product and technology landscapes into clear systems, useful boundaries, and decisions people can act on. My current interests include platform strategy, information architecture, and responsible AI products.</p><dl><div><dt>Base</dt><dd>Copenhagen, Denmark</dd></div><div><dt>Languages</dt><dd>English · Mandarin · Danish</dd></div><div><dt>Focus</dt><dd>Product architecture · Platforms · Responsible AI</dd></div></dl></div></div> },
+    { id: "about", title: "About", body: <div className="about-grid"><p className="about-lead">I’m Maya Chen, a fictional product architect used to demonstrate this open-source portfolio starter.</p><div><p>I help teams turn complex product and technology landscapes into clear systems, useful boundaries, and decisions people can act on. My current interests include platform strategy, information architecture, and responsible AI products.</p><a className="about-demo-link" href="https://abd-salam-shaikh.github.io/cursor-and-covers/" target="_blank" rel="noreferrer">View the live demo ↗</a><dl><div><dt>Base</dt><dd>Copenhagen, Denmark</dd></div><div><dt>Languages</dt><dd>English · Mandarin · Danish</dd></div><div><dt>Focus</dt><dd>Product architecture · Platforms · Responsible AI</dd></div></dl></div></div> },
     { id: "career", title: "Career", body: <Career /> },
     { id: "capabilities", title: "Capabilities", body: <div className="capability-grid"><article><span>01 / Architecture</span><h3>Direction before diagrams.</h3><p>Product strategy, domain modeling, target states, decision records, and standards that teams can actually use.</p></article><article><span>02 / Platforms</span><h3>Build the shared path.</h3><p>Platform boundaries, developer experience, service ownership, APIs, and evolutionary modernization.</p></article><article><span>03 / Information</span><h3>Make systems legible.</h3><p>Content models, navigation, taxonomy, portfolio maps, and evidence that supports better decisions.</p></article><article><span>04 / Responsible AI</span><h3>Explore with guardrails.</h3><p>Useful agent workflows, human oversight, evaluation, privacy, and accountable product delivery.</p></article></div> },
     { id: "credentials", title: "Education & credentials", body: <div className="credentials"><div><span>Education</span><article><h3>MSc, Human-Centered Computing</h3><p>Northbridge Institute · 2012—2014</p></article><article><h3>BSc, Computer Science</h3><p>Harbour College · 2008—2012</p></article></div><div><span>Practice areas</span><ul><li>Product and platform architecture</li><li>Domain-driven design</li><li>Cloud-native systems</li><li>Information architecture</li><li>Responsible AI delivery</li><li>Technical facilitation</li></ul></div></div> },
@@ -369,7 +370,7 @@ export default function App() {
       <section className="accordion-list">{sections.map((section) => { const isOpen = open === section.id; return <section className={`accordion ${isOpen ? "open" : ""}`} id={section.id} key={section.id}><button className="accordion-trigger" onClick={() => setOpen(isOpen ? "" : section.id)} aria-expanded={isOpen}><span className="chevron">›</span><h2>{section.title}</h2><small>{isOpen ? "Close" : "Open"}</small></button><div className="accordion-panel" aria-hidden={!isOpen}><div>{section.id !== "bookshelf" || isOpen ? section.body : null}</div></div></section>; })}</section>
       <section className="contact"><span>Architecture · transformation · advisory</span><h2>Building a clearer<br />technology future?</h2><p>Let’s discuss the landscape, the decisions, and the path forward.</p><button onClick={() => setContactOpen(true)}>How I can help ↗</button></section>
     </main>
-    <footer><span>© 2026 Maya Chen · Demo profile</span><nav><a href="https://github.com/your-handle" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:hello@example.com">Email ↗</a></nav><a href="#top">Top ↑</a></footer>
+    <footer><span>© 2026 Maya Chen · Demo profile</span><nav><a href="https://github.com/abd-salam-shaikh/cursor-and-covers" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:hello@example.com">Email ↗</a></nav><a href="#top">Top ↑</a></footer>
     {contactOpen && <div className="modal-backdrop" onMouseDown={() => setContactOpen(false)}><div className="contact-card" role="dialog" aria-modal="true" aria-labelledby="contact-title" onMouseDown={(event) => event.stopPropagation()}><button className="modal-close" onClick={() => setContactOpen(false)} aria-label="Close">×</button><span>Product architecture & systems design</span><h2 id="contact-title">Let’s make complexity navigable.</h2><p>This is fictional demonstration content. Replace it with a short invitation that suits your own work and audience.</p><a href="mailto:hello@example.com?subject=Portfolio%20conversation">hello@example.com <b>↗</b></a></div></div>}
   </div>;
 }

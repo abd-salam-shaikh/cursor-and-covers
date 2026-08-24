@@ -77,6 +77,7 @@ h1 { margin:0 0 22px; font:500 clamp(44px,6vw,64px)/.95 "Newsreader",serif; lett
 .about-grid dl div { padding:11px 0; display:grid; grid-template-columns:86px 1fr; border-bottom:1px dashed var(--line); font-size:8px; }
 .about-grid dt { color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
 .about-grid dd { margin:0; color:var(--muted); }
+.about-demo-link { display:inline-block; margin-top:18px; color:var(--accent); font-size:9px; text-decoration:underline; text-underline-offset:4px; }
 
 .career-list { padding:16px 22px 68px; }
 .career-entry { display:grid; grid-template-columns:42px 1fr; column-gap:14px; padding:27px 0 31px; border-bottom:1px dashed var(--line); }

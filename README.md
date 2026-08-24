@@ -2,6 +2,10 @@
 
 An open-source editorial portfolio starter with two playful interactions: a portrait that follows the cursor and a responsive 3D bookshelf you can browse, open, rotate, and zoom.
 
+[View the live demo](https://abd-salam-shaikh.github.io/cursor-and-covers/)
+
+![Cursor & Covers portfolio preview](docs/screenshot.jpg)
+
 The included person, career history, organizations, books, contact details, and portrait are fictional placeholders. Replace them with your own content before publishing.
 
 ## Features
@@ -26,6 +30,10 @@ Create a production build with:
 ```bash
 npm run build
 ```
+
+## Deployment
+
+Pushes to `main` are deployed automatically to GitHub Pages by the workflow in `.github/workflows/deploy-pages.yml`. If you fork the project or rename the repository, update `base` in `vite.config.ts` to match the repository name and enable **GitHub Actions** as the Pages source in the repository settings.
 
 ## Customize it
 
